@@ -39,7 +39,7 @@ public class DatabaseManagerMysql implements DatabaseManagerInterface{
 	public boolean setupDatabase() {
 		try {
        	 	//Load Drivers
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             
             dbHost = money.getConfigurationHandler().getString("database.mysql.host");
             dbPort = money.getConfigurationHandler().getString("database.mysql.port");
