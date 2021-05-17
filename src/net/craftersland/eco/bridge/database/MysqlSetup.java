@@ -82,47 +82,18 @@ public class MysqlSetup {
 		try {
 			if (conn == null) {
 				Eco.log.warning("Connection failed. Reconnecting...");
-				reConnect();
+				connectToDatabase();
 			}
 			if (!conn.isValid(3)) {
 				Eco.log.warning("Connection is idle or terminated. Reconnecting...");
-				reConnect();
+				connectToDatabase();
 			}
-			if (conn.isClosed() == true) {
+			if (conn.isClosed()) {
 				Eco.log.warning("Connection is closed. Reconnecting...");
-				reConnect();
+				connectToDatabase();
 			}
 		} catch (Exception e) {
 			Eco.log.severe("Could not reconnect to Database! Error: " + e.getMessage());
-		}
-	}
-	
-	public boolean reConnect() {
-		try {            
-            long start = 0;
-			long end = 0;
-			
-		    start = System.currentTimeMillis();
-		    Eco.log.info("Attempting to establish a connection to the MySQL server!");
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Properties properties = new Properties();
-            properties.setProperty("user", eco.getConfigHandler().getString("database.mysql.user"));
-            properties.setProperty("password", eco.getConfigHandler().getString("database.mysql.password"));
-            properties.setProperty("autoReconnect", "true");
-            properties.setProperty("verifyServerCertificate", "false");
-            properties.setProperty("useSSL", eco.getConfigHandler().getString("database.mysql.sslEnabled"));
-            properties.setProperty("requireSSL", eco.getConfigHandler().getString("database.mysql.sslEnabled"));
-            //properties.setProperty("useUnicode", "true");
-            //properties.setProperty("characterEncoding", "utf8");
-            //properties.setProperty("characterSetResults", "utf8");
-            //properties.setProperty("connectionCollation", "utf8mb4_unicode_ci");
-            conn = DriverManager.getConnection("jdbc:mysql://" + eco.getConfigHandler().getString("database.mysql.host") + ":" + eco.getConfigHandler().getString("database.mysql.port") + "/" + eco.getConfigHandler().getString("database.mysql.databaseName"), properties);
-		    end = System.currentTimeMillis();
-		    Eco.log.info("Connection to MySQL server established in " + ((end - start)) + " ms!");
-            return true;
-		} catch (Exception e) {
-			Eco.log.severe("Error re-connecting to the database! Error: " + e.getMessage());
-			return false;
 		}
 	}
 	

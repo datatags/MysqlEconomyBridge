@@ -35,8 +35,8 @@ public class Eco extends JavaPlugin {
     public void onEnable() {
 		log = getLogger();    	
     	//Setup Vault for economy
-        if (setupEconomy() == false) {
-            log.severe("Warning! - Vault installed? If yes Economy system installed?");
+        if (!setupEconomy()) {
+            log.severe("Couldn't find economy system, do you have both Vault and an economy system?");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }

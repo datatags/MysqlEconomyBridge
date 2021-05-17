@@ -13,11 +13,11 @@ public class ConfigHandler {
 	
 	public void loadConfig() {
 		File pluginFolder = new File("plugins" + System.getProperty("file.separator") + Eco.pluginName);
-		if (pluginFolder.exists() == false) {
+		if (!pluginFolder.exists()) {
     		pluginFolder.mkdir();
     	}
-		File configFile = new File("plugins" + System.getProperty("file.separator") + Eco.pluginName + System.getProperty("file.separator") + "config.yml");
-		if (configFile.exists() == false) {
+		File configFile = new File(pluginFolder, "config.yml");
+		if (!configFile.exists()) {
 			Eco.log.info("No config file found! Creating new one...");
 			eco.saveDefaultConfig();
 		}

@@ -1,8 +1,8 @@
 name: MysqlEcoBridge
 main: net.craftersland.eco.bridge.Eco
-version: 3.4.1
+version: 3.5
 depend: [Vault]
 website: www.craftersland.net
 load: STARTUP
 description: Sync your economy accounts over many servers using MySQL.
-api-version: 1.16
+api-version: 1.13
