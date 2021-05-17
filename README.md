@@ -4,5 +4,4 @@ Fork of the original [MySQL](http://www.spigotmc.org/resources/mysql-economy-bri
 - Newer libs
 - Legacy layer removed.
 - Java 1.8 is used instead of 1.7.
-
-Get the latest build by clicking [here](https://github.com/KoxSosen/MysqlEconomyBridge/releases/tag/latest).
+- Uses `com.mysql.cj.jdbc.Driver` instead of `com.mysql.jdbc.Driver` to remove the warning on Paper, does not work on Spigot at the time of writing!
